@@ -1,4 +1,6 @@
 import NS from '../constants/namespace';
+import PATHS from '../constants/routerPath';
+
 export default {
 
   namespace: NS.INDEX_PAGE,
@@ -9,6 +11,12 @@ export default {
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
+      history.listen(location => {
+        if (location.pathname !== PATHS.INDEX_PAGE) {
+          return;
+        }
+        console.log(location);
+      })
     },
   },
 
